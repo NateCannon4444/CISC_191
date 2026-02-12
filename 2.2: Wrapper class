@@ -1,0 +1,100 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class WrapperMain {
+    public static void main(String[] args) {
+        // Lab: Understanding and Using Wrapper Classes in Java
+        //Part 1 --- Boxing and Unboxing
+        //Task 1.1 --- Manual Boxing
+        //1.  Create an `int` variable.
+        //2.  Convert it to an `Integer` using `Integer.valueOf()`.
+        //3.  Print both values.
+        int a = 12;
+        Integer b = Integer.valueOf(a);
+        System.out.println(a);
+        System.out.println(b);
+        //Task 1.2 --- Auto Boxing and Unboxing
+        //1.  Assign an int directly to an Integer.
+        //2.  Assign an Integer back to an int.
+        //3.  Print both values.
+        Integer c  = 100;
+        int d = c;
+        System.out.println(c);
+        System.out.println(d);
+        //# Part 2 --- Wrapper Utility Methods
+        //Task 2.1 --- Convert String to Integer
+        //1.  Create a string `"123"`.
+        //2.  Convert it using `Integer.parseInt()`.
+        //3.  Add 10 and print result.
+        String s = "123";
+        int num = Integer.parseInt(s);
+        num+=10;
+        System.out.println(num);
+        //Task 2.2 --- Print Limits
+        //Print: - `Integer.MAX_VALUE` - `Integer.MIN_VALUE`
+        System.out.println(Integer.MAX_VALUE);
+        System.out.println(Integer.MIN_VALUE);
+        //Part 3 --- Wrapper Classes with ArrayList
+        //Create an `ArrayList<Integer>`.
+        //Add at least 3 numbers.
+        //Compute and print their sum.
+        ArrayList<Integer> arr = new ArrayList<>();
+        arr.add(1);
+        arr.add(2);
+        arr.add(3);
+        int sum = 0;
+        for(int i = 0; i <= 2; i++){
+            sum+= arr.get(i);
+        }
+        System.out.println(sum);
+        System.out.println(arr);
+        //Part 4 --- Character Wrapper
+        //1.  Declare a character.
+        //2.  Use:
+        //    -   `Character.isUpperCase()`
+        //    -   `Character.isDigit()`
+        //    -   `Character.isLetter()`
+        //3.  Print results.
+        char myChar = 'A';
+        boolean isUpper = Character.isUpperCase(myChar);
+        boolean isDigit = Character.isDigit(myChar);
+        boolean isLetter = Character.isLetter(myChar);
+        System.out.println(myChar);
+        System.out.println(isUpper);
+        System.out.println(isDigit);
+        System.out.println(isLetter);
+        char myNum = '7';
+        System.out.println("Is it a Digit? " + Character.isDigit(myNum));
+        //Bonus Challenge
+        //1.  Ask user for 5 numbers (as strings).
+        //2.  Convert them to Integer objects.
+        //3.  Store in ArrayList.
+        //4.  Compute:
+            //-   Sum
+            //-   Average
+            //-   Maximum (without using Collections.max)
+        Scanner scnnr = new Scanner(System.in);
+        ArrayList<Integer> numbers = new ArrayList<>();
+        System.out.println("Enter 5 numbers:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Number " + (i + 1) + ": ");
+            String userInput = scnnr.nextLine();
+            numbers.add(Integer.parseInt(userInput));
+        }
+        int total = 0;
+        int max = numbers.get(0);
+        for (int i = 0; i <= numbers.size()-1; i++) {
+            total += numbers.get(i);
+            if (numbers.get(i) > max) {
+                max = numbers.get(i);
+            }
+        }
+        double average = (double) sum / numbers.size();
+        System.out.println("ArrayList: " + numbers);
+        System.out.println("Sum: " + total);
+        System.out.println("Average: " + average);
+        System.out.println("Maximum: " + max);
+
+        scnnr.close();
+    }
+}
